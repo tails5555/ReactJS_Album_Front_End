@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 class PhotoElement extends Component{
     render() {
         return (
-            <div className="card mb-3">
+            <div className="card text-white bg-success mb-3">
                 <h3 className="card-header"></h3>
                 <img style={{
                     height : "200px",
