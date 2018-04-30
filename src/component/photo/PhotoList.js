@@ -5,7 +5,9 @@ class PhotoList extends Component{
         let imageList = <PhotoElement id={}/>
         return(
             <div className="row">
-                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                    <PhotoElement />
+                </div>
             </div>
         )
     }

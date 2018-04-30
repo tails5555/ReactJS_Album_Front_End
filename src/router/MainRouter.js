@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {Router} from 'react-router-dom';
+import React from 'react';
+import AlbumMenuContainer from '../container/AlbumMenuContainer';
+import {Router, BrowserRouter} from 'react-router-dom';
 const MainRouter = () => {
     return(
-        <div>
-            <Router exact path={"/album/:id"} ></Router>
-        </div>
+        <BrowserRouter>
+            <AlbumMenuContainer />
+        </BrowserRouter>
     )
 };
 export default MainRouter;
