@@ -1,0 +1,1 @@
+export {default as AlbumMenu} from './AlbumMenu';
