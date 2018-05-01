@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {PhotoElement} from "./index";
 import '../../index.css';
+import './photoBlock.css';
 class PhotoList extends Component{
     componentWillMount(){
         this.props.fetchPhotos(this.props.albumId);
@@ -20,7 +21,7 @@ class PhotoList extends Component{
         if(photos.length>0){
             photoElements = photos.map((photo, idx) => {
                 return(
-                    <div className="col-md-3" key={idx}>
+                    <div className="col-md-2" key={idx}>
                         <PhotoElement photoData={photo} />
                     </div>
                 );
@@ -31,7 +32,7 @@ class PhotoList extends Component{
             photoElements = <h2 className="hn">유효하지 않는 앨범을 요청했습니다...</h2>;
         }
         return(
-            <div className="row">
+            <div className="row photoBlock">
                 {photoElements}
             </div>
         )

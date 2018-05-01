@@ -5,7 +5,7 @@ class PhotoElement extends Component{
         console.log(id);
         return (
             <div className="card bg-secondary mb-3">
-                <h3 className="card-header">{title}</h3>
+                <h3 className="card-header text-center">{title}</h3>
                 <img style={{
                     width : "100%",
                     display : "block"
@@ -14,7 +14,7 @@ class PhotoElement extends Component{
                     <a href="#" className="card-link">확대하기</a>
                     <a href="#" className="card-link">삭제하기</a>
                 </div>
-                <div className="card-footer text-muted">
+                <div className="card-footer text-muted text-center">
                     {uploadTime}
                 </div>
             </div>
