@@ -1,11 +1,14 @@
 import React from 'react';
 import AlbumMenuContainer from '../container/AlbumMenuContainer';
-import {Router, BrowserRouter} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import AlbumMainPage from "../page/AlbumMainPage";
 const MainRouter = () => {
     return(
-        <BrowserRouter>
+        <div>
             <AlbumMenuContainer />
-        </BrowserRouter>
+            <Route exact path="/" render={() => <p>어서오십시오</p>} />
+            <Route exact path="/album/:id" component={AlbumMainPage} />
+        </div>
     )
 };
 export default MainRouter;

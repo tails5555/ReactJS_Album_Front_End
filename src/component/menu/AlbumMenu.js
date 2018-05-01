@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import '../../index.css';
 class AlbumMenu extends Component{
     componentWillMount(){
         this.props.fetchAlbums();
@@ -14,7 +15,7 @@ class AlbumMenu extends Component{
             menuList = albums.map((album) => {
                 return(
                     <li className="nav-item" key={album.id}>
-                        <Link className="nav-link" to={`/album/${album.id}`}>
+                        <Link className="nav-link hn" to={`/album/${album.id}`}>
                             {album.name}
                         </Link>
                     </li>
@@ -22,20 +23,20 @@ class AlbumMenu extends Component{
             })
         }else if(loading){
             menuList = (
-                <li className="nav-item">
+                <li className="nav-item hn">
                     메뉴를 불러오는 중입니다...
                 </li>
             )
         }else if(error){
             menuList = (
-                <li className="nav-item">
+                <li className="nav-item hn">
                     메뉴를 불러오는 도중 에러가 발생했습니다.
                 </li>
             )
         }
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link className="navbar-brand" to="/">React Album Example</Link>
+                <Link className="navbar-brand hn" to="/">React Album Example</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
