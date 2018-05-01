@@ -27,10 +27,10 @@ class AlbumElement extends Component{
         }
 
         return(
-            <div class="hn text-center">
-                <h1 class="display-3 title">{title}</h1>
-                <p class="lead">ReactJS를 기반으로 한 앨범 구현 페이지입니다.</p>
-                <hr class="my-4" />
+            <div className="hn text-center">
+                <h1 className="display-3 title">{title}</h1>
+                <p className="lead">ReactJS Component LifeCycle + Redux + Spring Async Album!!!</p>
+                <hr className="my-4" />
             </div>
         )
     }

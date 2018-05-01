@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AlbumElementContainer from '../container/AlbumElementContainer';
+import {AlbumElementContainer, PhotoListContainer} from "../container";
 import {withRouter} from 'react-router-dom';
 class AlbumMainPage extends Component{
     state = {
@@ -14,7 +14,8 @@ class AlbumMainPage extends Component{
     render(){
         return(
             <div>
-                <AlbumElementContainer albumId={this.state.albumId}/>
+                <AlbumElementContainer albumId={this.state.albumId} />
+                <PhotoListContainer albumId={this.state.albumId} />
             </div>
         )
     }
