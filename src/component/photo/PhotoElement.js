@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 class PhotoElement extends Component{
     render() {
         const {id, title, uploadTime} = this.props.photoData;
-        console.log(id);
         return (
             <div className="card bg-secondary mb-3">
                 <h3 className="card-header text-center">{title}</h3>

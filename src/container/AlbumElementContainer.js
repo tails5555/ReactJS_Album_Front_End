@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {
     selectAlbum, selectAlbumSuccess, selectAlbumFailure, resetSelectAlbum
 } from "../action/action_album";
-
+import {reset} from 'redux-form';
 const mapDispatchToProps = (dispatch) => {
     return{
         fetchAlbum : (albumId) => {
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         resetFetchAlbum : () => {
             dispatch(resetSelectAlbum());
+        },
+        resetForm : () => {
+            dispatch(reset('uploadForm'));
         }
     }
 }

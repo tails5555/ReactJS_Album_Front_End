@@ -1,21 +1,30 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import {reduxForm, Field} from 'redux-form';
+import {renderDropzoneInput} from "../form";
 import '../../index.css';
-import './title.css'
+import './title.css';
+import {uploadPhotoFiles} from "../../action/action_photo";
+const imageUploading = (values, dispatch) => {
+    dispatch(uploadPhotoFiles(values.photoFiles, 2));
+}
 class AlbumElement extends Component{
     componentWillMount(){
         this.props.fetchAlbum(this.props.albumId);
     }
     componentWillUnmount(){
+        this.props.resetForm();
         this.props.resetFetchAlbum();
     }
     componentWillReceiveProps(nextProps) {
         if(this.props.albumId !== nextProps.albumId){
+            this.props.resetForm();
             this.props.resetFetchAlbum();
             this.props.fetchAlbum(nextProps.albumId);
         }
     }
     render(){
+        const {handleSubmit} = this.props;
         const {album, loading, error} = this.props.album;
         let title;
         if(loading){
@@ -25,14 +34,27 @@ class AlbumElement extends Component{
         }else if(album){
             title = album.name + "목록";
         }
-
         return(
             <div className="hn text-center">
                 <h1 className="display-3 title">{title}</h1>
                 <p className="lead">ReactJS Component LifeCycle + Redux + Spring Async Album!!!</p>
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <form onSubmit={handleSubmit(imageUploading)} encType="multipart/form-data">
+                            <Field
+                                name="photoFiles"
+                                component={renderDropzoneInput}
+                            />
+                            <br/>
+                            <button type="submit" className="btn btn-primary">사진 추가하기</button>
+                        </form>
+                    </div>
+                </div>
                 <hr className="my-4" />
             </div>
         )
     }
 }
-export default withRouter(AlbumElement);
+export default reduxForm({
+    form : 'uploadForm'
+})(withRouter(AlbumElement));
