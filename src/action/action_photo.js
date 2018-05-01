@@ -43,12 +43,16 @@ export function resetAlbumWithPhotos(){
     }
 }
 
-export function uploadPhotoFiles(files, albumId){
-    const formData = new FormData();
-    console.log(files);
-    formData.append('files', files);
-    const request = axios.post(`${ROOT_URL}/album/${albumId}/upload/`, formData, {
-        "content-type": "multipart/form-data"
+export function uploadPhotoFiles(file, albumId){
+    let formData = new FormData();
+    formData.append('file', file);
+    const request = axios({
+        method : 'post',
+        url : `${ROOT_URL}/album/${albumId}/upload/`,
+        data : formData,
+        headers : {
+            contentType : "multipart/form-data"
+        }
     });
     return{
         type : UPLOAD_PHOTO_FILES,

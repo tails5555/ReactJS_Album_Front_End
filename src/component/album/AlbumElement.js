@@ -5,8 +5,12 @@ import {renderDropzoneInput} from "../form";
 import '../../index.css';
 import './title.css';
 import {uploadPhotoFiles} from "../../action/action_photo";
-const imageUploading = (values, dispatch) => {
-    dispatch(uploadPhotoFiles(values.photoFiles, 2));
+const imageUploading = (values, dispatch, props) => {
+    console.log(props);
+    const fileArray = values.photoFiles;
+    fileArray.map((file) => {
+        dispatch(uploadPhotoFiles(file, props.albumId));
+    });
 }
 class AlbumElement extends Component{
     componentWillMount(){
