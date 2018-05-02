@@ -5,10 +5,10 @@ export const LOAD_ALBUM_WITH_PHOTOS_SUCCESS = 'LOAD_ALBUM_WITH_PHOTOS_SUCCESS';
 export const LOAD_ALBUM_WITH_PHOTOS_FAILURE = 'LOAD_ALBUM_WITH_PHOTOS_FAILURE';
 export const RESET_LOAD_ALBUM_WITH_PHOTOS = 'RESET_LOAD_ALBUM_WITH_PHOTOS';
 
-export const UPLOAD_PHOTO_FILES = 'UPLOAD_PHOTO_FILES';
-export const UPLOAD_PHOTO_FILES_SUCCESS = 'UPLOAD_PHOTO_FILES_SUCCESS';
-export const UPLOAD_PHOTO_FILES_FAILURE = 'UPLOAD_PHOTO_FILES_FAILURE';
-export const RESET_UPLOAD_PHOTO_FILES = 'RESET_UPLOAD_PHOTO_FILES';
+export const UPLOAD_PHOTO_FILE = 'UPLOAD_PHOTO_FILE';
+export const UPLOAD_PHOTO_FILE_SUCCESS = 'UPLOAD_PHOTO_FILE_SUCCESS';
+export const UPLOAD_PHOTO_FILE_FAILURE = 'UPLOAD_PHOTO_FILE_FAILURE';
+export const RESET_UPLOAD_PHOTO_FILE = 'RESET_UPLOAD_PHOTO_FILE';
 
 const ROOT_URL = 'http://localhost:8080/react_album_example_01/main';
 
@@ -43,7 +43,7 @@ export function resetAlbumWithPhotos(){
     }
 }
 
-export function uploadPhotoFiles(file, albumId){
+export function uploadPhotoFile(file, albumId){
     let formData = new FormData();
     formData.append('file', file);
     const request = axios({
@@ -51,11 +51,31 @@ export function uploadPhotoFiles(file, albumId){
         url : `${ROOT_URL}/album/${albumId}/upload/`,
         data : formData,
         headers : {
-            contentType : "multipart/form-data"
+            "Content-Type" : "multipart/form-data"
         }
     });
     return{
-        type : UPLOAD_PHOTO_FILES,
+        type : UPLOAD_PHOTO_FILE,
         payload : request
+    }
+}
+
+export function uploadPhotoFileSuccess(message){
+    return{
+        type : UPLOAD_PHOTO_FILE_SUCCESS,
+        payload : message.data
+    }
+}
+
+export function uploadPhotoFileFailure(error){
+    return{
+        type : UPLOAD_PHOTO_FILE_FAILURE,
+        payload : error
+    }
+}
+
+export function resetUploadPhotoFile(){
+    return{
+        type : RESET_UPLOAD_PHOTO_FILE
     }
 }

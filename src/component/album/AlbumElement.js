@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {reduxForm, Field} from 'redux-form';
+import {reduxForm, Field, SubmissionError} from 'redux-form';
 import {renderDropzoneInput} from "../form";
 import '../../index.css';
 import './title.css';
-import {uploadPhotoFiles} from "../../action/action_photo";
+import {uploadPhotoFile, uploadPhotoFileFailure, uploadPhotoFileSuccess} from "../../action/action_photo";
 const imageUploading = (values, dispatch, props) => {
-    console.log(props);
     const fileArray = values.photoFiles;
-    fileArray.map((file) => {
-        dispatch(uploadPhotoFiles(file, props.albumId));
-    });
+    if(fileArray){
+        fileArray.map((file) => {
+            dispatch(uploadPhotoFile(file, props.albumId)).then(res =>{
+                if (res.payload && res.payload.status !== 200) {
+                    dispatch(uploadPhotoFileFailure(res.payload.data));
+                    throw new SubmissionError(res.payload.data);
+                }
+                dispatch(uploadPhotoFileSuccess(res.payload.data));
+            });
+        });
+    }
 }
 class AlbumElement extends Component{
     componentWillMount(){

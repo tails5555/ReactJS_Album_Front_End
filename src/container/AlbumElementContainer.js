@@ -26,7 +26,8 @@ const mapDispatchToProps = (dispatch) => {
 
 function mapStateToProps(state){
     return{
-        album : state.album.selectAlbum
+        album : state.album.selectAlbum,
+        uploading : state.photo.uploading
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumElement);
