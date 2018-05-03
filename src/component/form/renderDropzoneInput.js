@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+// Redux Form에서도 Dropzone을 이용할 수 있도록 개조하였다.
 const renderDropzoneInput = (field) => {
     const files = field.input.value;
     const dropzoneStyle = {
@@ -7,6 +8,7 @@ const renderDropzoneInput = (field) => {
         height : "40%",
         border : "1px solid black"
     };
+    // Dropzone, span(에러 관련), ul(파일 목록 관련) 3가지로 나뉜다.
     return (
         <div>
             <Dropzone

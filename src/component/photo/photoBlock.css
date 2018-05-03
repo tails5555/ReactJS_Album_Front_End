@@ -2,3 +2,21 @@
     min-height : 600px;
     padding-left : 5px;
 }
+
+.photoElement {
+    animation-duration: 1s;
+    animation-name: slidein;
+    animation-timing-function: linear;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}

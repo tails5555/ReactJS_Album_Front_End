@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import '../../index.css';
+// AlbumMenu는 각 앨범들에 대한 Menu를 Router를 통해 돌릴 수 있도록 하는 Navbar Component로 보면 된다.
 class AlbumMenu extends Component{
+    // Component가 실행될 시에 앨범 목록들에 대해서 추출을 한다.
     componentWillMount(){
         this.props.fetchAlbums();
     }
+    // Component가 종료될 시에는 앨범 목록에 대해 초기화를 시킨다.
     componentWillUnmount(){
         this.props.resetFetchAlbums();
     }
+    // 각 앨범 정보들에 대해 Mounting이 된 경우 각 앨범 별로 메뉴를 형성시킨다.
     render(){
         const {albums, loading, error} = this.props.albums;
         let menuList;
