@@ -1,6 +1,9 @@
 import {PhotoList} from "../component/photo";
 import {connect} from 'react-redux';
-import {loadAlbumWithPhotos, loadAlbumWithPhotosSuccess, loadAlbumWithPhotosFailure, resetAlbumWithPhotos} from "../action/action_photo";
+import {
+    loadAlbumWithPhotos, loadAlbumWithPhotosSuccess, loadAlbumWithPhotosFailure, resetAlbumWithPhotos,
+    resetAllUploading
+} from "../action/action_photo";
 const mapDispatchToProps = (dispatch) => {
     return{
         fetchPhotos : (albumId) => {
@@ -14,12 +17,16 @@ const mapDispatchToProps = (dispatch) => {
         },
         resetFetchPhotos : () => {
             dispatch(resetAlbumWithPhotos());
+        },
+        resetAllUpload : () => {
+            dispatch(resetAllUploading());
         }
     }
 }
 function mapStateToProps(state){
     return{
-        photos : state.photo.photoList
+        photos : state.photo.photoList,
+        uploadState : state.photo.uploadState
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoList);

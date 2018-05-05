@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import {
     selectAlbum, selectAlbumSuccess, selectAlbumFailure, resetSelectAlbum
 } from "../action/action_album";
+import {
+    resetAllUploading, resetUploadPhotoFile
+} from "../action/action_photo";
 import {reset} from 'redux-form';
 const mapDispatchToProps = (dispatch) => {
     return{
@@ -20,6 +23,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         resetForm : () => {
             dispatch(reset('uploadForm'));
+        },
+        resetUploadFile : () => {
+            dispatch(resetUploadPhotoFile());
+        },
+        resetAllUpload : () => {
+            dispatch(resetAllUploading());
         }
     }
 }
@@ -27,7 +36,9 @@ const mapDispatchToProps = (dispatch) => {
 function mapStateToProps(state){
     return{
         album : state.album.selectAlbum,
-        uploading : state.photo.uploading
+        uploading : state.photo.uploading,
+        uploadState : state.photo.uploadState,
+        uploadForm : state.form.uploadForm
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumElement);

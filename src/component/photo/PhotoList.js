@@ -24,6 +24,12 @@ class PhotoList extends Component{
     // render는 각 앨범에 존재하는 사진 목록들에 대해서 가져올 때 이용한다.
     render() {
         const {photos, loading, error} = this.props.photos;
+        const {status} = this.props.uploadState;
+        if(status === 'REDIRECT'){
+            this.props.resetAllUpload();
+            this.props.resetFetchPhotos();
+            this.props.fetchPhotos(this.props.albumId);
+        }
         let photoElements;
         if(photos.length>0){
             photoElements = photos.map((photo, idx) => {
