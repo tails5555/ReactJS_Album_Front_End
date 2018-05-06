@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 // PhotoElement는 각 사진 정보들에 대해서 표식을 할 수 있도록 하기 위한 Component이다.
 class PhotoElement extends Component{
     render() {
@@ -10,10 +11,9 @@ class PhotoElement extends Component{
                 <img className="zoom" style={{
                     width : "100%",
                     display : "block"
-                }} src={`http://localhost:8080/react_album_example_01/main/photo/${id}` }/>
+                }} src={`http://localhost:8080/react_album_example_01/main/photo/view/${id}` }/>
                 <div className="card-body">
-                    <a href="#" className="card-link">확대하기</a>
-                    <a href="#" className="card-link">삭제하기</a>
+                    <Link to={`/photo/${id}`}><button className="btn btn-block btn-info">자세히</button></Link>
                 </div>
                 <div className="card-footer text-muted text-center">
                     {uploadTime}
