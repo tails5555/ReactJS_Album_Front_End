@@ -1,35 +1,12 @@
 import axios from 'axios';
 
+const ROOT_URL = 'http://localhost:8080/react_album_example_01/main';
+
+// 앨범에 해당이 되는 사진들을 불러온다.
 export const LOAD_ALBUM_WITH_PHOTOS = 'LOAD_ALBUM_WITH_PHOTOS';
 export const LOAD_ALBUM_WITH_PHOTOS_SUCCESS = 'LOAD_ALBUM_WITH_PHOTOS_SUCCESS';
 export const LOAD_ALBUM_WITH_PHOTOS_FAILURE = 'LOAD_ALBUM_WITH_PHOTOS_FAILURE';
 export const RESET_LOAD_ALBUM_WITH_PHOTOS = 'RESET_LOAD_ALBUM_WITH_PHOTOS';
-
-export const UPLOAD_PHOTO_FILE = 'UPLOAD_PHOTO_FILE';
-export const UPLOAD_PHOTO_FILE_SUCCESS = 'UPLOAD_PHOTO_FILE_SUCCESS';
-export const UPLOAD_PHOTO_FILE_FAILURE = 'UPLOAD_PHOTO_FILE_FAILURE';
-export const RESET_UPLOAD_PHOTO_FILE = 'RESET_UPLOAD_PHOTO_FILE';
-
-export const ALL_UPLOADING_EXECUTE = 'ALL_UPLOADING_EXECUTE';
-export const ALL_UPLOADING_COMPLETE = 'ALL_UPLOADING_COMPLETE';
-export const RESET_ALL_UPLOADING = 'RESET_ALL_UPLOADING';
-
-export const LOAD_PHOTO_INFO = 'LOAD_PHOTO_INFO';
-export const LOAD_PHOTO_INFO_SUCCESS = 'LOAD_PHOTO_INFO_SUCCESS';
-export const LOAD_PHOTO_INFO_FAILURE = 'LOAD_PHOTO_INFO_FAILURE';
-export const RESET_LOAD_PHOTO_INFO = 'RESET_LOAD_PHOTO_INFO';
-
-export const DELETE_PHOTO = 'DELETE_PHOTO';
-export const DELETE_PHOTO_SUCCESS = 'DELETE_PHOTO_SUCCESS';
-export const DELETE_PHOTO_FAILURE = 'DELETE_PHOTO_FAILURE';
-export const RESET_DELETE_PHOTO = 'RESET_DELETE_PHOTO';
-
-export const DELETE_SELECT_PHOTOS = 'DELETE_SELECT_PHOTOS';
-export const DELETE_SELECT_PHOTOS_SUCCESS = 'DELETE_SELECT_PHOTOS_SUCCESS';
-export const DELETE_SELECT_PHOTOS_FAILURE = 'DELETE_SELECT_PHOTOS_FAILURE';
-export const RESET_DELETE_SELECT_PHOTOS = 'RESET_DELETE_SELECT_PHOTOS';
-
-const ROOT_URL = 'http://localhost:8080/react_album_example_01/main';
 
 export function loadAlbumWithPhotos(albumId){
     const request=axios({
@@ -61,6 +38,12 @@ export function resetAlbumWithPhotos(){
         type : RESET_LOAD_ALBUM_WITH_PHOTOS
     }
 }
+
+// 한 사진에 대해 업로딩을 진행한다.
+export const UPLOAD_PHOTO_FILE = 'UPLOAD_PHOTO_FILE';
+export const UPLOAD_PHOTO_FILE_SUCCESS = 'UPLOAD_PHOTO_FILE_SUCCESS';
+export const UPLOAD_PHOTO_FILE_FAILURE = 'UPLOAD_PHOTO_FILE_FAILURE';
+export const RESET_UPLOAD_PHOTO_FILE = 'RESET_UPLOAD_PHOTO_FILE';
 
 export function uploadPhotoFile(file, albumId){
     let formData = new FormData();
@@ -99,6 +82,11 @@ export function resetUploadPhotoFile(){
     }
 }
 
+// 사진에 대해 업로딩을 시작, 완료, 재설정을 한다.
+export const ALL_UPLOADING_EXECUTE = 'ALL_UPLOADING_EXECUTE';
+export const ALL_UPLOADING_COMPLETE = 'ALL_UPLOADING_COMPLETE';
+export const RESET_ALL_UPLOADING = 'RESET_ALL_UPLOADING';
+
 export function allUploadingExecute(){
     return{
         type : ALL_UPLOADING_EXECUTE
@@ -116,6 +104,12 @@ export function resetAllUploading(){
         type : RESET_ALL_UPLOADING
     }
 }
+
+// 한 사진의 정보를 불러온다.
+export const LOAD_PHOTO_INFO = 'LOAD_PHOTO_INFO';
+export const LOAD_PHOTO_INFO_SUCCESS = 'LOAD_PHOTO_INFO_SUCCESS';
+export const LOAD_PHOTO_INFO_FAILURE = 'LOAD_PHOTO_INFO_FAILURE';
+export const RESET_LOAD_PHOTO_INFO = 'RESET_LOAD_PHOTO_INFO';
 
 export function loadPhotoInfo(photoId){
     const request=axios({
@@ -148,6 +142,12 @@ export function resetLoadPhotoInfo(){
     }
 }
 
+// 한 사진에 대해 삭제를 한다.
+export const DELETE_PHOTO = 'DELETE_PHOTO';
+export const DELETE_PHOTO_SUCCESS = 'DELETE_PHOTO_SUCCESS';
+export const DELETE_PHOTO_FAILURE = 'DELETE_PHOTO_FAILURE';
+export const RESET_DELETE_PHOTO = 'RESET_DELETE_PHOTO';
+
 export function deletePhoto(photoId){
     const request=axios({
         method : 'delete',
@@ -176,5 +176,43 @@ export function deletePhotoFailure(error){
 export function resetDeletePhoto(){
     return{
         type : RESET_DELETE_PHOTO
+    }
+}
+
+// 여러 사진에 대해 삭제를 한다.
+export const DELETE_SELECT_PHOTOS = 'DELETE_SELECT_PHOTOS';
+export const DELETE_SELECT_PHOTOS_SUCCESS = 'DELETE_SELECT_PHOTOS_SUCCESS';
+export const DELETE_SELECT_PHOTOS_FAILURE = 'DELETE_SELECT_PHOTOS_FAILURE';
+export const RESET_DELETE_SELECT_PHOTOS = 'RESET_DELETE_SELECT_PHOTOS';
+
+export function deleteSelectPhotos(selectIndex){
+    const request=axios({
+        method : 'delete',
+        url : `${ROOT_URL}/photo/deleteByIndexes`,
+        data : selectIndex
+    });
+    return{
+        type : DELETE_SELECT_PHOTOS,
+        payload : request
+    }
+}
+
+export function deleteSelectPhotosSuccess(message){
+    return{
+        type : DELETE_SELECT_PHOTOS_SUCCESS,
+        payload : message.data
+    }
+}
+
+export function deleteSelectPhotosFailure(error){
+    return{
+        type : DELETE_SELECT_PHOTOS_FAILURE,
+        payload : error
+    }
+}
+
+export function resetDeleteSelectPhotos(){
+    return{
+        type : RESET_DELETE_SELECT_PHOTOS
     }
 }
