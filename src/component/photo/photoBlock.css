@@ -20,3 +20,22 @@
         width: 100%;
     }
 }
+
+.zoom:hover {
+    animation: image_block 1s ease infinite;
+}
+
+@keyframes image_block{
+    0%{
+        transform: scale(1, 1);
+        border : 2px solid indigo;
+    }
+    50%{
+        transform: scale(1.05, 1.05);
+        border : 2px solid blue;
+    }
+    100%{
+        transform: scale(1, 1);
+        border : 2px solid deepskyblue;
+    }
+}

@@ -7,7 +7,7 @@ class PhotoElement extends Component{
         return (
             <div className="card bg-secondary mb-3">
                 <h3 className="card-header text-center">{title}</h3>
-                <img style={{
+                <img className="zoom" style={{
                     width : "100%",
                     display : "block"
                 }} src={`http://localhost:8080/react_album_example_01/main/photo/${id}` }/>
