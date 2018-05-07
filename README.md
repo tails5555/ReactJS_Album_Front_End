@@ -12,9 +12,17 @@
 - `axios` - AJAX를 기반으로 비동기 통신을 적용하기 위해 이용.
 - `react-dropzone` - ReactJS에서 파일 업로드를 진행할 수 있도록 도와 주는 Form.
 ## Screenshot
+![reactjs_album_example01](/public/img/reactjs_album_example01.png "reactjs_album_example01")
+![reactjs_album_example02](/public/img/reactjs_album_example02.png "reactjs_album_example02")
+![reactjs_album_example03](/public/img/reactjs_album_example03.png "reactjs_album_example03")
+![reactjs_album_example04](/public/img/reactjs_album_example04.png "reactjs_album_example04")
+![reactjs_album_example05](/public/img/reactjs_album_example05.png "reactjs_album_example05")
+![reactjs_album_example06](/public/img/reactjs_album_example06.png "reactjs_album_example06")
+![reactjs_album_example07](/public/img/reactjs_album_example07.png "reactjs_album_example07")
+![reactjs_album_example08](/public/img/reactjs_album_example08.png "reactjs_album_example08")
 
 ## Server Side References
 - Client Side는 `Spring Boot`를 기반으로 작성을 하였으며, 아래 `README.md`를 참고하시면 됩니다.
-- [ReactJS Client 참조하기](https://github.com/tails5555/ReactJS_Album_Back_End)
+- [ReactJS Server 참조하기](https://github.com/tails5555/ReactJS_Album_Back_End)
 ## Author
 - [강인성](https://github.com/tails5555)
