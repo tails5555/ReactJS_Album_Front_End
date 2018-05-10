@@ -63,7 +63,7 @@
 ![reactjs_album_example08](/public/img/reactjs_album_example08.png "reactjs_album_example08")
 
 ## Server Side References
-- Client Side는 `Spring Boot`를 기반으로 작성을 하였으며, 아래 `README.md`를 참고하시면 됩니다.
+- Server Side는 `Spring Boot`를 기반으로 작성을 하였으며, 아래 `README.md`를 참고하시면 됩니다.
 - [Spring Boot Server 참조하기](https://github.com/tails5555/ReactJS_Album_Back_End)
 ## Author
 - [강인성](https://github.com/tails5555)
